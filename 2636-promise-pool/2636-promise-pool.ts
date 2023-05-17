@@ -1,11 +1,8 @@
-/**
- * @param {Function[]} functions
- * @param {number} n
- * @return {Function}
- */
-var promisePool = async function(functions, n) {
-  const results = [];
-  const inProgress = [];
+type F = () => Promise<any>;
+
+async function promisePool(functions: F[], n: number): Promise<any> {
+const results: any[] = [];
+  const inProgress: Promise<any>[] = [];
   let i = 0;
 
   while (i < functions.length || inProgress.length > 0) {
@@ -25,7 +22,6 @@ var promisePool = async function(functions, n) {
 
   return results;
 };
-
 
 /**
  * const sleep = (t) => new Promise(res => setTimeout(res, t));
